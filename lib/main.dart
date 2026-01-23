@@ -6,6 +6,9 @@ import 'package:map2game/product/navigation/app_gorouter.dart';
 import 'package:map2game/product/state/cubit/theme/theme_cubit.dart';
 import 'package:map2game/product/theme/theme.dart';
 
+// Test modu flag'i - true yapınca test modunda başlar rout degişir
+const bool isTestMode = false;
+
 Future<void> main() async {
   await AppInitialize().make();
   runApp(const StateInitialize(child: _MyApp()));
@@ -22,7 +25,7 @@ class _MyApp extends StatelessWidget {
       darkTheme: AppTheme.darkTheme,
       theme: AppTheme.lightTheme,
       themeMode: context.watch<ThemeCubit>().state,
-      routerConfig: router,
+      routerConfig: isTestMode ? testRouter : router,
     );
   }
 }
