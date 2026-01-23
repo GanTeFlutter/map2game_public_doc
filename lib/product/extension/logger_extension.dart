@@ -13,4 +13,3 @@ extension LoggerExtension on Object {
     }
   }
 }
-

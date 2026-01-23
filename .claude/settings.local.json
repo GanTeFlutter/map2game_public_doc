@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(findstr:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git branch:*)"
     ]
   }
 }
