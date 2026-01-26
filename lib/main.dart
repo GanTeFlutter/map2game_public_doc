@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:map2game/product/init/app_initialize.dart';
 import 'package:map2game/product/init/app_state_initialize.dart';
 import 'package:map2game/product/navigation/app_gorouter.dart';
-import 'package:map2game/product/state/cubit/theme/theme_cubit.dart';
+import 'package:map2game/product/theme/state/theme_cubit.dart';
 import 'package:map2game/product/theme/theme.dart';
 
 // Test modu flag'i - true yapınca test modunda başlar rout degişir
