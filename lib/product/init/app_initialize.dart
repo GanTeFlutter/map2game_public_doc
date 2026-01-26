@@ -12,16 +12,7 @@ import 'package:path_provider/path_provider.dart';
 final class AppInitialize {
   Future<void> make() async {
     WidgetsFlutterBinding.ensureInitialized();
-    await runZonedGuarded(
-      () async => _initialize(),
-      (error, stack) {
-        FirebaseCrashlytics.instance.recordError(
-          error,
-          stack,
-          fatal: true,
-        );
-      },
-    );
+    await _initialize();
   }
 
   Future<void> _initialize() async {
@@ -33,17 +24,25 @@ final class AppInitialize {
       await FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(false);
     }
 
+    // Widget & framework hataları
     FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
+    // Platform / isolate hataları
     PlatformDispatcher.instance.onError = (error, stack) {
-      FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+      FirebaseCrashlytics.instance.recordError(
+        error,
+        stack,
+        fatal: true,
+      );
       return true;
     };
 
+    // HydratedBloc storage
     final directory = await getApplicationDocumentsDirectory();
     HydratedBloc.storage = await HydratedStorage.build(
       storageDirectory: HydratedStorageDirectory(directory.path),
     );
+
     await setupLocator();
   }
 }
