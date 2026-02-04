@@ -52,8 +52,8 @@ lib/
 │       ├── home/
 │       ├── map/
 │       ├── notification/
-│       ├── profile/
-│       └── product/
+│       └── profile/
+│       
 │
 ├── product/
 │   │
