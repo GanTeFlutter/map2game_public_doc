@@ -1,13 +1,15 @@
 import 'package:flutter/foundation.dart';
 
-extension LoggerExtension on Object {
-  void appLog(String pageName, String debugMessage) {
+class AppLogger {
+  AppLogger._();
+  
+  static void log(String pageName, String debugMessage) {
     if (kDebugMode) {
       debugPrint('-- $pageName: $debugMessage');
     }
   }
 
-  void buildLog(String pageName) {
+  static void buildLog(String pageName) {
     if (kDebugMode) {
       debugPrint('--🏗️ $pageName: Build çalıştı');
     }
